@@ -21,7 +21,8 @@ for test in ['initArray().bubbleSort()',
     print(test, "took", elapsed, "seconds", flush=True)
 
    
-duplicado = arr.duplicado()
+duplicado = arr.duplicado
+print('duplicados', duplicado)
 arr.insertionSort()
 print('Sorted array contains:\n', arr)
 

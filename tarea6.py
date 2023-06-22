@@ -14,18 +14,11 @@ class Array(object):
       if 0 <= n and n < self.nElementos: # Check if n is in bounds, and
          return self.__a[n]            # only return item if in bounds
       
-   def duplicado(self):
-        if self.nElementos < 2:
-            return
-        
-        unique_arr = [self.__a[0]]  # Matriz única inicialmente con el primer elemento
-
-        for i in range(1, self.nElementos):
-         if self.__a[i] != self.__a[i - 1]:  # Verificar duplicados
-            unique_arr.append(self.__a[i])
-
-        self.__a = unique_arr
-        self.nElementos = len(unique_arr)
+   def duplicado(self,):
+        for i in self.__a:
+         if self.__a.count(i) > 1:
+            self.__a.remove(i)
+            print (i)
                 
    def set(self, n, value):            # Set the value at index n
       if 0 <= n and n < self.nElementos: # Check if n is in bounds, and
@@ -96,14 +89,26 @@ class Array(object):
          # __a[min] is smallest among __a[outer]...__a[nElementos-1]
          self.swap(outer, min)        # Swap leftmost and min
          
-   def insertionSort(self):           # Sort by repeated inserts
-      for outer in range(1, self.nElementos): # Mark one item
-         temp = self.__a[outer]       # Store marked item in temp
-         inner = outer                # Inner loop starts at mark
-         while inner > 0 and temp < self.__a[inner-1]: # If marked
-            self.__a[inner] = self.__a[inner-1] # item smaller, then
-            inner -= 1                # shift item to right
-         self.__a[inner] = temp       # Move marked item to 'hole'
+   def insertionSort(self):
+    # Sort by repeated inserts
+    for outer in range(1, self.nElementos):  # Mark one item
+        temp = self.__a[outer]  # Store marked item in temp
+        inner = outer  # Inner loop starts at mark
+        while inner > 0 and temp < self.__a[inner - 1]:  
+            self.__a[inner] = self.__a[inner - 1]
+            inner -= 1
+        self.__a[inner] = temp  
+
+    
+    special_value = float('-inf')  
+    i = 1
+    while i < self.nElementos:
+        if self.__a[i] == self.__a[i - 1]:  
+            self.__a[i] = special_value
+        i += 1
+
+    self.__a = [item for item in self.__a if item != special_value]  
+    self.nElementos = len(self.__a) 
     
 
 
