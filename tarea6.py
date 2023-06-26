@@ -14,11 +14,11 @@ class Array(object):
       if 0 <= n and n < self.nElementos: # Check if n is in bounds, and
          return self.__a[n]            # only return item if in bounds
       
-   def duplicado(self,):
+   def duplicado(self):
         for i in self.__a:
          if self.__a.count(i) > 1:
-            self.__a.remove(i)
-            print (i)
+            self.delete(i)
+            
                 
    def set(self, n, value):            # Set the value at index n
       if 0 <= n and n < self.nElementos: # Check if n is in bounds, and
@@ -89,27 +89,35 @@ class Array(object):
          # __a[min] is smallest among __a[outer]...__a[nElementos-1]
          self.swap(outer, min)        # Swap leftmost and min
          
-   def insertionSort(self):
+   def insertionSort(self):          
     # Sort by repeated inserts
-    for outer in range(1, self.nElementos):  # Mark one item
+    for outer in range(1, self.nElementos): 
+        # Mark one item
         temp = self.__a[outer]  # Store marked item in temp
         inner = outer  # Inner loop starts at mark
-        while inner > 0 and temp < self.__a[inner - 1]:  
-            self.__a[inner] = self.__a[inner - 1]
+        while inner > 0 and temp == self.__a[inner-1]:
+            # Skip duplicate elements
             inner -= 1
-        self.__a[inner] = temp  
+        while inner > 0 and temp < self.__a[inner-1]: 
+            # If marked item larger, then shift item to right
+            self.__a[inner] = self.__a[inner-1]
+            inner -= 1
+        self.__a[inner] = temp 
+    self.nElementos = len(set(self.__a))
+    non_duplicate_elements = []
+    for i in range(self.nElementos):
+        if self.__a[i] not in self.__a[i+1:]:
+            non_duplicate_elements.append(self.__a[i])
+    self.__a = non_duplicate_elements
 
-    
-    special_value = float('-inf')  
-    i = 1
-    while i < self.nElementos:
-        if self.__a[i] == self.__a[i - 1]:  
-            self.__a[i] = special_value
-        i += 1
+    self.nElementos = len(self.__a)
 
-    self.__a = [item for item in self.__a if item != special_value]  
-    self.nElementos = len(self.__a) 
-    
+            
+                      
+          
+          
+             
+             
 
 
 

@@ -20,9 +20,6 @@ for test in ['initArray().bubbleSort()',
     elapsed = timeit.timeit(test, number=100, globals=globals())
     print(test, "took", elapsed, "seconds", flush=True)
 
-   
-duplicado = arr.duplicado
-print('duplicados', duplicado)
 arr.insertionSort()
-print('Sorted array contains:\n', arr)
+print('Sorted array contains:\n', arr)  
 
