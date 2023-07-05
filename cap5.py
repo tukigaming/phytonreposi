@@ -4,7 +4,7 @@ class Node:
         self.next = None
 
 
-class CircularLinkedList:
+class Circular:
     def __init__(self):
         self.__last = None
 
@@ -83,26 +83,5 @@ class CircularLinkedList:
             self.__last = current
 
 
-# Ejemplo de uso
-clist = CircularLinkedList()
 
-print(clist.is_empty())  # True
 
-clist.insert_last(10)
-clist.insert_last(20)
-clist.insert_first(5)
-
-print(clist.get_first())  # 5
-print(clist)  # [5, 10, 20]
-
-clist.delete_first()
-
-print(clist)  # [10, 20]
-
-print(clist.search(20))  # 20
-
-clist.step()
-print(clist.get_first())  # 10
-
-clist.seek(20)
-print(clist.get_first())  # 20

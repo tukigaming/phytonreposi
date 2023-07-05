@@ -26,8 +26,7 @@ class PriorityQueue(object):
          self.__que[j+1] = self.__que[j] # Shift items to front
          j -= 1
          front = self.__que[self.__nItems] 
-      self.__nItems -= 1   
-      print()     
+      self.__nItems -= 1       
       return front
     
    def peek(self):                    # Return frontmost item
